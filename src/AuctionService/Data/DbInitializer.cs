@@ -10,7 +10,7 @@ public class DbInitializer
         SeedData(scope.ServiceProvider.GetRequiredService<AuctionDbContext>());
     }
 
-    private static void SeedData(AuctionDbContext auctionDbContext)
+    private static void SeedData(AuctionDbContext context)
     {
         throw new NotImplementedException();
     }
