@@ -1,3 +1,11 @@
 {
-  "cSpell.ignoreWords": ["postgrespassword"]
+  "cSpell.ignoreWords": ["postgrespassword"],
+  "cSpell.customDictionaries": {
+    "custom-dictionary-workspace": {
+      "name": "custom-dictionary-workspace",
+      "path": "${workspaceFolder:MicroMuzayede}/.cspell/custom-dictionary-workspace.txt",
+      "addWords": true,
+      "scope": "workspace"
+    }
+  }
 }

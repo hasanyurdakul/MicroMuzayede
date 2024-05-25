@@ -2,7 +2,7 @@
 .vs/
 .idea/
 .vscode/
-
+.cspell/
 # Ignore build outputs
 bin/
 obj/
