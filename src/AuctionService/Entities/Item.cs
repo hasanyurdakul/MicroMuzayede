@@ -1,4 +1,6 @@
-﻿namespace AuctionService.Entities;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AuctionService.Entities;
 
 public class Item
 {
@@ -11,4 +13,8 @@ public int Mileage { get; set; }
 public string ImageUrl { get; set; }
 
 // Navigation Properties
+[ForeignKey(nameof(Auction))]
+public Guid AuctionId { get; set; }
+public Auction Auction { get; set; }
+
 }
