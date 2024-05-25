@@ -8,8 +8,8 @@ namespace AuctionService.Data;
 /// </summary>
 public class AuctionDbContext : DbContext
 {
-    DbSet<Auction> Auctions { get; set; }
-    DbSet<Item> Items { get; set; }
+    public DbSet<Auction> Auctions { get; set; }
+    public DbSet<Item> Items { get; set; }
 
     public AuctionDbContext(DbContextOptions options) : base(options)
     {

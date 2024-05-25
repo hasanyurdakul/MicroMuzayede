@@ -1,4 +1,7 @@
-﻿
+﻿using AuctionService.Entities;
+using AuctionService.Data.SeedData;
+using Microsoft.EntityFrameworkCore;
+
 namespace AuctionService.Data;
 
 public class DbInitializer
@@ -12,6 +15,16 @@ public class DbInitializer
 
     private static void SeedData(AuctionDbContext context)
     {
-        throw new NotImplementedException();
+        context.Database.Migrate();
+
+        if (context.Auctions.Any())
+        {
+            Console.WriteLine("Database already seeded");
+            return;
+        }
+        List<Auction> auctionSeedData = AuctionSeedData.GetAuctionSeedData();
+
+        context.AddRange(auctionSeedData);
+        context.SaveChanges();
     }
 }
