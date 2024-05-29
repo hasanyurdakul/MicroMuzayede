@@ -21,10 +21,10 @@ try
 {
     await DbInitializer.InitDb(app);
 }
-catch (System.Exception ex)
+catch (Exception ex)
 {
 
-    System.Console.WriteLine(ex); ;
+    Console.WriteLine(ex); ;
 }
 
 app.Run();
