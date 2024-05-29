@@ -38,6 +38,16 @@ public class SearchController : ControllerBase
             _ => query.Match(x => x.AuctionEnd > DateTime.UtcNow)
         };
 
+        if (!string.IsNullOrEmpty(searchParams.Seller))
+        {
+            query.Match(x => x.Seller == searchParams.Seller);
+        }
+
+        if (!string.IsNullOrEmpty(searchParams.Winner))
+        {
+            query.Match(x => x.Winner == searchParams.Winner);
+        }
+
 
         //QUERY ICIN PAGE NUMBER VE PAGE SIZE SET EDILDI.
         query.PageNumber(searchParams.PageNumber);
