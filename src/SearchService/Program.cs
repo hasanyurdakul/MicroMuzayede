@@ -19,6 +19,7 @@ builder.Services.AddMassTransit(x =>
     {
         cfg.ConfigureEndpoints(context);
     });
+    x.AddConsumersFromNamespaceContaining<AuctionCreatedConsumer>();
 });
 var app = builder.Build();
 
