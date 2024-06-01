@@ -26,7 +26,6 @@ builder.Services.AddMassTransit(x =>
             e.ConfigureConsumer<AuctionCreatedConsumer>(context);
         });
         cfg.ConfigureEndpoints(context);
-
     });
 });
 var app = builder.Build();
@@ -45,8 +44,7 @@ app.Lifetime.ApplicationStarted.Register(async () =>
     }
     catch (Exception ex)
     {
-
-        Console.WriteLine(ex); ;
+        Console.WriteLine(ex);
     }
 });
 
