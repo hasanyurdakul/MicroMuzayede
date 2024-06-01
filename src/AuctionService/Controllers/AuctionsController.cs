@@ -1,4 +1,4 @@
-﻿using AuctionService.Data;
+using AuctionService.Data;
 using AuctionService.DTOs;
 using AuctionService.Entities;
 using AutoMapper;
@@ -34,9 +34,6 @@ public class AuctionsController : ControllerBase
         }
 
         return await query.ProjectTo<AuctionDto>(_mapper.ConfigurationProvider).ToListAsync();
-
-
-
     }
 
     [HttpGet("{id}")]
@@ -62,7 +59,6 @@ public class AuctionsController : ControllerBase
 
         if (!result) return BadRequest("Could not save changes to the database");
         return CreatedAtAction(nameof(GetAuctionById), new { id = auction.Id }, newAuctionDto);
-
     }
 
     [HttpPut("{id}")]
@@ -86,7 +82,6 @@ public class AuctionsController : ControllerBase
         {
             return BadRequest("Problem while saving changes!");
         }
-
     }
 
     [HttpDelete("{id}")]
@@ -102,5 +97,4 @@ public class AuctionsController : ControllerBase
         if (result) return Ok();
         return BadRequest("Error while deleting auction");
     }
-
 }

@@ -1,4 +1,4 @@
-﻿namespace SearchService;
+namespace SearchService;
 
 public class SearchParams
 {
@@ -9,5 +9,4 @@ public class SearchParams
     public string Winner { get; set; }
     public string OrderBy { get; set; }
     public string FilterBy { get; set; }
-
 }
