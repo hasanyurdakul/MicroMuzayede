@@ -54,10 +54,12 @@ public class AuctionsController : ControllerBase
         //TODO: ADD CURRENT USER AS SELLER
         auction.Seller = "test";
         _context.Auctions.Add(auction);
+        var newAuctionDto = _mapper.Map<AuctionDto>(auction);
+        //EĞER KAYIT BAŞARILI OLURSA PUBLISH METODU ILE EVENTI YAYINLAR. MASSTRANSIT PROGRAM.CS'TE REGISTER EDILDIGINDE OUTBOX CONFIGURE EDILDIYSE, TRANSACTIONAL OLARAK KAYIT YAPAR VE BU SAYEDE FAIL OLURSA OUTBOX'A KAYIT EDER. BURADA PUBLISH EDILEN AUCTIONCREATED EVENTI, SEARCHSERVICE ICINDEKI AUCTIONCREATEDCONSUMER TARAFINDAN DINLENIR VE GEREKLI ISLEMLER YAPILIR. AUCTIONCREATED, HEM SEARCHSERVICE HEM DE AUCTIONSERVICE TARAFINDA AYNI OLMASI GEREKTIGI ICIN CONTRACTS PROJESINDE TANIMLANMISTIR.BUNUN SEBEBI MASSTRANSIT'IN CALISIRKEN CONTRACTLARIN BIND EDILEBILMESI ICIN AYNI NAMESPACE'TE OLMASI GEREKTIGIDIR.
+        await _publishEndpoint.Publish(_mapper.Map<AuctionCreated>(newAuctionDto));
         //SAVE CHANGES BAŞARI ILE KAYIT ETTIGI KAYITLARIN SAYISINI INT OLARAK DONER
         var result = await _context.SaveChangesAsync() > 0;
-        var newAuctionDto = _mapper.Map<AuctionDto>(auction);
-        await _publishEndpoint.Publish(_mapper.Map<AuctionCreated>(newAuctionDto));
+
         if (!result) return BadRequest("Could not save changes to the database");
         return CreatedAtAction(nameof(GetAuctionById), new { id = auction.Id }, newAuctionDto);
 
