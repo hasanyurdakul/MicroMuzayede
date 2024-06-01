@@ -1,4 +1,4 @@
-﻿using System.CodeDom.Compiler;
+using System.CodeDom.Compiler;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Entities;
@@ -48,15 +48,12 @@ public class SearchController : ControllerBase
             query.Match(x => x.Winner == searchParams.Winner);
         }
 
-
         //QUERY ICIN PAGE NUMBER VE PAGE SIZE SET EDILDI.
         query.PageNumber(searchParams.PageNumber);
         query.PageSize(searchParams.PageSize);
 
-
         //QUERY EXECUTE EDILDI.
         var result = await query.ExecuteAsync();
-
 
         //SONUC OLARAK BULUNAN ITEM SAYISI, SAYFA SAYISI VE TOPLAM ITEM SAYISI CLIENTA ANONYMOUS OBJECT OLARAK GONDERILDI.
         return Ok(new
@@ -64,9 +61,6 @@ public class SearchController : ControllerBase
             results = result.Results,
             pageCount = result.PageCount,
             totalCount = result.TotalCount
-
         });
     }
-
-
 }

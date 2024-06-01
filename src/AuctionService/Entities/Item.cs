@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AuctionService.Entities;
 
@@ -16,5 +16,4 @@ public string ImageUrl { get; set; }
 [ForeignKey(nameof(Auction))]
 public Guid AuctionId { get; set; }
 public Auction Auction { get; set; }
-
 }
