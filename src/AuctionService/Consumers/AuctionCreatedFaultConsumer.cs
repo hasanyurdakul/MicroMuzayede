@@ -9,7 +9,7 @@ public class AuctionCreatedFaultConsumer : IConsumer<Fault<AuctionCreated>>
     {
         var exception = context.Message.Exceptions.First();
         Console.WriteLine("#### Consuming Faulty Creation ####\n" + exception.Message);
-        if (exception.ExceptionType == typeof(ArgumentException).Name)
+        if (exception.ExceptionType == "System.ArgumentException")
         {
             context.Message.Message.Model = "Bar";
             await context.Publish(context.Message.Message);
