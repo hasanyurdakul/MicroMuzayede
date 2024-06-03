@@ -2,10 +2,7 @@
 @model IdentityService.Pages.Login.Index
 
 <div class="login-page">
-    <div class="lead">
-        <h1>Login</h1>
-        <p>Choose how to login</p>
-    </div>
+
 
     <partial name="_ValidationSummary" />
 
@@ -16,7 +13,7 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Local Account</h2>
+                        <h2>Login</h2>
                     </div>
 
                     <div class="card-body">
@@ -29,9 +26,10 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="Input.Password"></label>
-                                <input type="password" class="form-control" placeholder="Password" asp-for="Input.Password" autocomplete="off">
+                                <input type="password" class="form-control" placeholder="Password" asp-for="Input.Password"
+                                    autocomplete="off">
                             </div>
-                            
+
                             @if (Model.View.AllowRememberLogin)
                             {
                                 <div class="form-group">
@@ -43,9 +41,16 @@
                                     </div>
                                 </div>
                             }
-                            
+
+
                             <button class="btn btn-primary" name="Input.Button" value="login">Login</button>
                             <button class="btn btn-secondary" name="Input.Button" value="cancel">Cancel</button>
+
+                            <a class=" btn btn-success d-block mt-2 " asp-page="../Register/Index"
+                                asp-route-returnUrl="@Model.Input.ReturnUrl">
+                                Register
+                            </a>
+
                         </form>
                     </div>
                 </div>
@@ -64,10 +69,9 @@
                             @foreach (var provider in Model.View.VisibleExternalProviders)
                             {
                                 <li class="list-inline-item">
-                                    <a class="btn btn-secondary"
-                                       asp-page="/ExternalLogin/Challenge"
-                                       asp-route-scheme="@provider.AuthenticationScheme"
-                                       asp-route-returnUrl="@Model.Input.ReturnUrl">
+                                    <a class="btn btn-secondary" asp-page="/ExternalLogin/Challenge"
+                                        asp-route-scheme="@provider.AuthenticationScheme"
+                                        asp-route-returnUrl="@Model.Input.ReturnUrl">
                                         @provider.DisplayName
                                     </a>
                                 </li>
