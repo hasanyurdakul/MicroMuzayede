@@ -54,8 +54,6 @@ internal static class Log
 	{
 		_noConsentMatchingRequest(logger, returnUrl, null);
 	}
-
-
 }
 
 internal static class EventIds
@@ -81,7 +79,4 @@ internal static class EventIds
 	private const int CibaEventsStart = UIEventsStart + 3000;
 	public const int InvalidBackchannelLoginId = CibaEventsStart + 0;
     public const int NoMatchingBackchannelLoginRequest = CibaEventsStart + 1;
-
-
-
 }

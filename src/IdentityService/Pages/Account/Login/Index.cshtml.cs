@@ -194,7 +194,6 @@ public class Index : PageModel
             ));
         providers.AddRange(dynamicSchemes);
 
-
         var allowLocal = true;
         var client = context?.Client;
         if (client != null)

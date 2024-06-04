@@ -53,14 +53,11 @@ namespace IdentityService.Pages.Register
                 {
                     await _userManager.AddClaimsAsync(user, new Claim[]{
                         new Claim(JwtClaimTypes.Name,Input.FullName)
-
                     });
                     RegisterSuccess = true;
                 }
-
             }
             return Page();
-
         }
     }
 }
