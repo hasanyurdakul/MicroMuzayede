@@ -80,7 +80,6 @@ public class AuctionsController : ControllerBase
 
         var result = await _context.SaveChangesAsync() > 0;
 
-
         if (result)
         {
             return Ok();
