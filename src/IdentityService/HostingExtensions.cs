@@ -40,7 +40,6 @@ internal static class HostingExtensions
         builder.Services.ConfigureApplicationCookie(options =>
         {
             options.Cookie.SameSite = SameSiteMode.Lax;
-
         });
 
         builder.Services.AddAuthentication();

@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace IdentityService;
 
@@ -14,5 +14,4 @@ public class RegisterViewModel
     public string FullName { get; set; }
     public string ReturnUrl { get; set; }
     public string Button { get; set; }
-
 }
