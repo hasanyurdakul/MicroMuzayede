@@ -22,6 +22,8 @@ builder.Services.AddMassTransit(x =>
         o.UsePostgres();
     });
     x.AddConsumersFromNamespaceContaining<AuctionCreatedFaultConsumer>();
+    x.AddConsumersFromNamespaceContaining<AuctionFinishedConsumer>();
+    x.AddConsumersFromNamespaceContaining<BidPlacedConsumer>();
     x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("auction", false));
     x.UsingRabbitMq((context, cfg) =>
     {
