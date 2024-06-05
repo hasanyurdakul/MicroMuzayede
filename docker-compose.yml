@@ -65,7 +65,7 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - ConnectionStrings__DefaultConnection=Server=postgres;Port=5432;Database=identity;User Id=postgres;Password=1q2w3e4r;
     ports:
-      - 5001:80
+      - 5000:80
     depends_on:
       - postgres
 # volumes:
