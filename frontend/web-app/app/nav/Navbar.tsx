@@ -1,5 +1,6 @@
 import React from "react";
 import { IoCarSport } from "react-icons/io5";
+import Search from "./Search";
 
 export default function Navbar() {
   return (
@@ -8,7 +9,7 @@ export default function Navbar() {
         <IoCarSport size={34} />
         <div>Micro Muzeyede</div>
       </div>
-      <div>SEARCH</div>
+      <Search />
       <div>LOGIN</div>
     </header>
   );
