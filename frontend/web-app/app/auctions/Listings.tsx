@@ -17,6 +17,7 @@ export default function Listings() {
       pageSize: state.pageSize,
       searchTerm: state.searchTerm,
       orderBy: state.orderBy,
+      filterBy: state.filterBy,
     }),
     shallow
   );
