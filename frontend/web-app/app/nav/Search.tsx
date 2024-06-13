@@ -5,14 +5,14 @@ import { FaSearch } from "react-icons/fa";
 
 export default function Search() {
   const setParams = useParamsStore((state) => state.setParams);
-  const [value, setValue] = useState("");
-
+  const setSearchValue = useParamsStore((state) => state.setSearchValue);
+  const searchValue = useParamsStore((state) => state.searchValue);
   function onChange(event: any) {
-    setValue(event.target.value);
+    setSearchValue(event.target.value);
   }
 
   function search() {
-    setParams({ searchTerm: value });
+    setParams({ searchTerm: searchValue });
   }
   return (
     <div className="flex w-[50%] items-center border-2 rounded-full py-2 shadow-sm">
@@ -23,6 +23,7 @@ export default function Search() {
           }
         }}
         onChange={onChange}
+        value={searchValue}
         type="text"
         placeholder="Search for cars by make, model or color"
         className="border-transparent flex-grow rounded-full bg-transparent pl-5 focus:outline-none focus:border-transparent focus:ring-0 text-sm text-gray-600 "
