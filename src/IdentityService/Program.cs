@@ -21,9 +21,12 @@ try
         .ConfigurePipeline();
 
     SeedData.EnsureSeedData(app);
+    app.UseStaticFiles();
+    app.UseRouting();
 
     app.Run();
 }
+
 catch (Exception ex) when (ex is not HostAbortedException)
 {
     Log.Fatal(ex, "Unhandled exception");
