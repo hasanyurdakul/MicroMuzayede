@@ -16,7 +16,7 @@ export default async function page() {
       </div>
       <div className="bg-green-200 border-2 border-blue-500 mt-5">
         <h3 className="text-lg">Token Data</h3>
-        <pre>{JSON.stringify(token, null, 2)}</pre>
+        <pre className="overflow-auto">{JSON.stringify(token, null, 2)}</pre>
       </div>
       <div className="mt-4">
         <AuthTest />
