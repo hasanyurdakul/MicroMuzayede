@@ -17,11 +17,15 @@ export async function UpdateAuctionTest() {
     mileage: Math.floor(Math.random() * 100000) + 1,
   };
 
+  const token = await getTokenWorkaround();
   const res = await fetch(
     "http://localhost:6001/auctions/466e4744-4dc5-4987-aae0-b621acfc5e39",
     {
       method: "PUT",
-      headers: {},
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token?.access_token,
+      },
       body: JSON.stringify(data),
     }
   );
