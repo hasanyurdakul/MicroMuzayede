@@ -15,7 +15,7 @@ export async function UpdateAuctionTest() {
   };
 
   const res = await fetch(
-    "http://localhost:6001/auctions/c8c3ec17-01bf-49db-82aa-1ef80b833a9f",
+    "http://localhost:6001/auctions/466e4744-4dc5-4987-aae0-b621acfc5e39",
     {
       method: "PUT",
       headers: {},
