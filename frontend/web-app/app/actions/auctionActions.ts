@@ -1,5 +1,8 @@
 "use server";
 import { Auction, PagedResult } from "@/types";
+import { NextApiRequest } from "next";
+import { getToken } from "next-auth/jwt";
+import { cookies, headers } from "next/headers";
 
 export async function getData(query: string): Promise<PagedResult<Auction>> {
   const result = await fetch(`http://localhost:6001/search${query}`);
@@ -28,4 +31,17 @@ export async function UpdateAuctionTest() {
   }
 
   return res.statusText;
+}
+
+export async function getTokenWorkaround() {
+  const req = {
+    headers: Object.fromEntries(headers() as Headers),
+    cookies: Object.fromEntries(
+      cookies()
+        .getAll()
+        .map((c) => [c.name, c.value])
+    ),
+  } as NextApiRequest;
+
+  return await getToken({ req });
 }
