@@ -6,7 +6,7 @@ const baseUrl = "http://localhost:6001/"; // URL of the gateway service
 async function get(url: string) {
   const requestOptions = {
     method: "GET",
-    //headers: {},
+    headers: await getHeaders(),
   };
 
   const response = await fetch(baseUrl + url, requestOptions);
@@ -18,6 +18,27 @@ async function post(url: string, body: {}) {
     method: "POST",
     headers: await getHeaders(),
     body: JSON.stringify(body),
+  };
+
+  const response = await fetch(baseUrl + url, requestOptions);
+  return await handleResponse(response);
+}
+
+async function put(url: string, body: {}) {
+  const requestOptions = {
+    method: "PUT",
+    headers: await getHeaders(),
+    body: JSON.stringify(body),
+  };
+
+  const response = await fetch(baseUrl + url, requestOptions);
+  return await handleResponse(response);
+}
+
+async function del(url: string) {
+  const requestOptions = {
+    method: "DELETE",
+    headers: await getHeaders(),
   };
 
   const response = await fetch(baseUrl + url, requestOptions);
@@ -50,4 +71,7 @@ async function handleResponse(response: Response) {
 
 export const fetchWrapper = {
   get,
+  post,
+  put,
+  del,
 };
