@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.CodeDom.Compiler;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Entities;
 
@@ -38,9 +39,9 @@ public class BidsController : ControllerBase
         else
         {
             var highBid = await DB.Find<Bid>()
-                            .Match(a => a.AuctionId == auctionId)
-                            .Sort(b => b.Descending(x => x.Amount))
-                            .ExecuteFirstAsync();
+                .Match(a => a.AuctionId == auctionId)
+                .Sort(b => b.Descending(x => x.Amount))
+                .ExecuteFirstAsync();
 
             if (highBid != null && amount > highBid.Amount || highBid == null)
             {
@@ -55,6 +56,18 @@ public class BidsController : ControllerBase
         await DB.SaveAsync(bid);
         return Ok();
 
+    }
+
+
+
+    [HttpGet("{auctionId}")]
+    public async Task<ActionResult<List<Bid>>> GetBidsForAuction(string auctionId)
+    {
+        var bids = await DB.Find<Bid>()
+            .Match(a => a.AuctionId == auctionId)
+            .Sort(b => b.Descending(x => x.BidTime))
+            .ExecuteAsync();
+        return bids;
     }
 
 }
