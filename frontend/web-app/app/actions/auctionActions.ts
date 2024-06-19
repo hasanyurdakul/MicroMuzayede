@@ -14,7 +14,7 @@ export async function getData(query: string): Promise<PagedResult<Auction>> {
   return await fetchWrapper.get(`search${query}`);
 }
 
-export async function UpdateAuctionTest() {
+export async function updateAuctionTest() {
   const data = {
     mileage: Math.floor(Math.random() * 100000) + 1,
   };
