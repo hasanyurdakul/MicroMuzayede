@@ -3,6 +3,7 @@ import { fetchWrapper } from "@/lib/fetchWrapper";
 import { Auction, PagedResult } from "@/types";
 import { NextApiRequest } from "next";
 import { getToken } from "next-auth/jwt";
+import { revalidatePath } from "next/cache";
 import { cookies, headers } from "next/headers";
 import { FieldValues } from "react-hook-form";
 
@@ -45,4 +46,13 @@ export async function createAuction(data: FieldValues) {
 
 export async function getDetailedViewData(id: string): Promise<Auction> {
   return await fetchWrapper.get(`auctions/${id}`);
+}
+
+export async function updateAuction(data: FieldValues, id: string) {
+  revalidatePath(`/auctions/${id}`);
+  return await fetchWrapper.put(`auctions/${id}`, data);
+}
+
+export async function deleteAuction(id: string) {
+  return await fetchWrapper.del(`auctions/${id}`);
 }
