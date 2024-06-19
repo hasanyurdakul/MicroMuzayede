@@ -1,3 +1,6 @@
+import { getTokenWorkaround } from "@/app/actions/auctionActions";
+import { headers } from "next/headers";
+
 const baseUrl = "http://localhost:6001/"; // URL of the gateway service
 
 async function get(url: string) {
@@ -7,7 +10,27 @@ async function get(url: string) {
   };
 
   const response = await fetch(baseUrl + url, requestOptions);
-  return handleResponse(response);
+  return await handleResponse(response);
+}
+
+async function post(url: string, body: {}) {
+  const requestOptions = {
+    method: "POST",
+    headers: await getHeaders(),
+    body: JSON.stringify(body),
+  };
+
+  const response = await fetch(baseUrl + url, requestOptions);
+  return await handleResponse(response);
+}
+
+async function getHeaders() {
+  const token = await getTokenWorkaround();
+  const headers = { "Content-Type": "application/json" } as any;
+  if (token) {
+    headers.Authorization = "Bearer " + token.access_token;
+  }
+  return headers;
 }
 
 async function handleResponse(response: Response) {
