@@ -4,6 +4,7 @@ import { Auction, PagedResult } from "@/types";
 import { NextApiRequest } from "next";
 import { getToken } from "next-auth/jwt";
 import { cookies, headers } from "next/headers";
+import { FieldValues } from "react-hook-form";
 
 export async function getData(query: string): Promise<PagedResult<Auction>> {
   // const result = await fetch(`http://localhost:6001/search${query}`);
@@ -36,4 +37,8 @@ export async function getTokenWorkaround() {
   } as NextApiRequest;
 
   return await getToken({ req });
+}
+
+export async function createAuction(data: FieldValues) {
+  return await fetchWrapper.post("auctions", data);
 }
