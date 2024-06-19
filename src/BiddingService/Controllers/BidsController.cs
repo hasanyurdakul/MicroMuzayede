@@ -54,7 +54,7 @@ public class BidsController : ControllerBase
         }
 
         await DB.SaveAsync(bid);
-        return Ok();
+        return bid;
 
     }
 
