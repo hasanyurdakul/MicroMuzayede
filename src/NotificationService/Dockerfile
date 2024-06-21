@@ -16,13 +16,13 @@ COPY src/Contracts/Contracts.csproj src/Contracts/Contracts.csproj
 RUN dotnet restore MicroMuzayede.sln
 
 #COPY THE REST OF THE FILES
-COPY src/BiddingService src/BiddingService
+COPY src/NotificationService src/NotificationService
 COPY src/Contracts src/Contracts
-WORKDIR /app/src/BiddingService 
+WORKDIR /app/src/NotificationService 
 RUN dotnet publish -c Release -o /app/src/out
 
 # BUILD THE RUNTIME IMAGE
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 
 WORKDIR /app
 COPY --from=build /app/src/out .
-ENTRYPOINT ["dotnet", "BiddingService.dll"]
+ENTRYPOINT ["dotnet", "NotificationService.dll"]
