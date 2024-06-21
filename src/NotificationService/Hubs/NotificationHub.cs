@@ -1,6 +1,8 @@
-﻿namespace NotificationService;
+﻿using Microsoft.AspNetCore.SignalR;
 
-public class NotificationHub
+namespace NotificationService;
+
+public class NotificationHub : Hub
 {
 
 }
