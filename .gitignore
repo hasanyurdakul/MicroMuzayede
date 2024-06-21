@@ -12,9 +12,7 @@ src\AuctionService\obj\
 # Ignore package dependencies
 packages/
 
-# Ignore local configuration files
-appsettings.json
-appsettings.Development.json
+
 # Ignore log files
 *.log
 
