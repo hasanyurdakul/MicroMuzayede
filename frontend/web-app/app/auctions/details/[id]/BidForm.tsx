@@ -1,6 +1,8 @@
 "use client";
 import { placeBidForAuction } from "@/app/actions/auctionActions";
+import { numberWithCommas } from "@/app/lib/NumberWithComma";
 import { useBidStore } from "@/hooks/useBidStore";
+import { hi } from "date-fns/locale";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
@@ -32,7 +34,9 @@ export default function BidForm({ auctionId, highBid }: Props) {
         type="number"
         {...register("amount")}
         className="input-custom text-sm text-gray-600"
-        placeholder={`Enter your bid (minimum bid is TODO)`}
+        placeholder={`Enter your bid (minimum bid is $${numberWithCommas(
+          highBid + 1
+        )})`}
       />
     </form>
   );
