@@ -23,6 +23,7 @@ export default function BidForm({ auctionId, highBid }: Props) {
 
   function onSubmit(data: FieldValues) {
     if (data.amount <= highBid) {
+      reset();
       return toast.error(
         `Your bid must be higher than the $${numberWithCommas(highBid)}!`
       );
