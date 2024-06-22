@@ -1,5 +1,5 @@
 "use server";
-import { fetchWrapper } from "@/lib/fetchWrapper";
+import { fetchWrapper } from "@/app/lib/fetchWrapper";
 import { Auction, Bid, PagedResult } from "@/types";
 import { NextApiRequest } from "next";
 import { getToken } from "next-auth/jwt";
