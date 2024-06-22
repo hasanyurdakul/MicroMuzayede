@@ -20,7 +20,13 @@ export default function BidForm({ auctionId, highBid }: Props) {
     formState: { errors },
   } = useForm();
   const addBid = useBidStore((state) => state.addBid);
+
   function onSubmit(data: FieldValues) {
+    if (data.amount <= highBid) {
+      return toast.error(
+        `Your bid must be higher than the $${numberWithCommas(highBid)}!`
+      );
+    }
     placeBidForAuction(auctionId, +data.amount)
       .then((bid) => {
         if (bid.error) throw bid.error;
