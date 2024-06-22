@@ -5,6 +5,7 @@ import { useBidStore } from "@/hooks/useBidStore";
 import { hi } from "date-fns/locale";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 type Props = {
   auctionId: string;
@@ -20,9 +21,12 @@ export default function BidForm({ auctionId, highBid }: Props) {
   } = useForm();
   const addBid = useBidStore((state) => state.addBid);
   function onSubmit(data: FieldValues) {
-    placeBidForAuction(auctionId, +data.amount).then((bid) => {
-      addBid(bid);
-    });
+    placeBidForAuction(auctionId, +data.amount)
+      .then((bid) => {
+        if (bid.error) throw bid.error;
+        addBid(bid);
+      })
+      .catch((err) => toast.error(err.message));
     reset();
   }
   return (
