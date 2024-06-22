@@ -1,3 +1,4 @@
+"use client";
 import { useAuctionStore } from "@/hooks/useAuctionStore";
 import { useBidStore } from "@/hooks/useBidStore";
 import { Bid } from "@/types";
