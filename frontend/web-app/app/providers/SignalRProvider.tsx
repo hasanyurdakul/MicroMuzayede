@@ -16,7 +16,7 @@ export default function SignalRProvider({ children }: Props) {
 
   useEffect(() => {
     const newConnection = new HubConnectionBuilder()
-      .withUrl("https://localhost:6001/notifications")
+      .withUrl("http://localhost:6001/notifications")
       .withAutomaticReconnect()
       .build();
 
