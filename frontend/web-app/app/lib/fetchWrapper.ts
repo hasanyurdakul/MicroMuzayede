@@ -1,7 +1,7 @@
 import { getTokenWorkaround } from "@/app/actions/auctionActions";
 import { headers } from "next/headers";
 
-const baseUrl = "http://localhost:6001/"; // URL of the gateway service
+const baseUrl = process.env.API_URL; // URL of the gateway service
 
 async function get(url: string) {
   const requestOptions = {
