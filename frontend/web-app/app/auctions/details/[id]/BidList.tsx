@@ -22,7 +22,12 @@ export default function BidList({ user, auction }: Props) {
   const bids = useBidStore((state) => state.bids);
   const setBids = useBidStore((state) => state.setBids);
   const highBid = bids.reduce(
-    (prev, current) => (prev > current.amount ? prev : current.amount),
+    (prev, current) =>
+      prev > current.amount
+        ? prev
+        : current.bidStatus.includes("Accepted")
+        ? current.amount
+        : prev,
     0
   );
   useEffect(() => {
