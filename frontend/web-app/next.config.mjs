@@ -3,6 +3,7 @@ const nextConfig = {
   images: {
     domains: ["cdn.pixabay.com", "images.unsplash.com", "pixabay.com"],
   },
+  output: "standalone",
 };
 
 export default nextConfig;
