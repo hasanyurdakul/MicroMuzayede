@@ -19,15 +19,19 @@ export default function SignalRProvider({ children, user }: Props) {
   const [connection, setConnection] = useState<HubConnection | null>();
   const setCurrentPrice = useAuctionStore((state) => state.setCurrentPrice);
   const addBid = useBidStore((state) => state.addBid);
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://api.micromuzayede.com/notifications"
+      : process.env.NEXT_PUBLIC_NOTIFICATION_URL;
 
   useEffect(() => {
     const newConnection = new HubConnectionBuilder()
-      .withUrl(process.env.NEXT_PUBLIC_NOTIFICATION_URL!)
+      .withUrl(apiUrl!)
       .withAutomaticReconnect()
       .build();
 
     setConnection(newConnection);
-  }, []);
+  }, [apiUrl]);
 
   useEffect(() => {
     if (connection) {
