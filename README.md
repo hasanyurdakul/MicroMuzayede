@@ -1,6 +1,9 @@
 # Micro Muzayede
 ![Header](https://raw.githubusercontent.com/hasanyurdakul/hasanyurdakul.com.tr/5624e03582d69873c2f271df0d8682f7939c85f7/public/images/work/micro-muzayede-sc-1.png)
+
+<p align="center">
 [![CodeFactor](https://www.codefactor.io/repository/github/hasanyurdakul/micromuzayede/badge)](https://www.codefactor.io/repository/github/hasanyurdakul/micromuzayede)
+</p>
  1. Micro Muzayed project is a Microservices proof of concept project developed using technologies such as ASP.NET Core, Entity Framework Core, Identity Server, PostgreSQL, MongoDB, MassTransit, RabbitMQ, YARP, SignalR, xUnit, NextJS and so on.
  2. The application is designed to support scalable web APIs using ASP.NET Core. This represents an approach that adopts microservices architecture to enable functionality to be distributed and scaled in a modular manner.
  3. Data persistence was addressed by diversifying across different database technologies. Using Entity Framework Core, PostgreSQL and MongoDB, the application was integrated into different data storage solutions. This provided flexibility and performance in data management.
