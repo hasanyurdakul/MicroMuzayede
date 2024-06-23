@@ -3,6 +3,7 @@ import { useParamsStore } from "@/hooks/useParamsStore";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { IoCarSport } from "react-icons/io5";
+import MicroImage from "./MicroImage";
 
 export default function Logo() {
   const router = useRouter();
@@ -19,8 +20,7 @@ export default function Logo() {
       onClick={doReset}
       className="flex cursor-pointer items-center gap-2 text-3xl font-semibold text-red-500"
     >
-      <IoCarSport size={34} />
-      <div>Micro Muzeyede</div>
+      <MicroImage />
     </div>
   );
 }
